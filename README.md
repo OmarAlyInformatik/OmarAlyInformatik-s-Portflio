@@ -4,16 +4,16 @@ Willkommen auf dem Repository zu meiner persönlichen Portfolio-Webseite! Hier p
 
 ## 🛠️ Tech Stack
 Auf meiner Webseite und in meinen Projekten nutze ich aktuell folgende Technologien:
-* **Python**[cite: 1]
-* **HTML5**[cite: 1]
-* **CSS**[cite: 1]
-* **JavaScript**[cite: 1]
-* **Git & GitHub**[cite: 1]
+* **Python**
+* **HTML5**
+* **CSS**
+* **JavaScript**
+* **Git & GitHub**
 
 ## 📂 Highlights & Repositories
-* **Arbeitsfokus:** Ein praktisches Tool, das beim strukturierten und organisierten Lernen unterstützt[cite: 1].
-* **Learning Python:** Mein persönliches Lern-Repository, in dem ich Schritt für Schritt Python-Konzepte ausprobiere und anwende[cite: 1].
+* **Arbeitsfokus:** Ein praktisches Tool, das beim strukturierten und organisierten Lernen unterstützt.
+* **Learning Python:** Mein persönliches Lern-Repository, in dem ich Schritt für Schritt Python-Konzepte ausprobiere und anwende.
 * **Es kommen bald neue!**
 
 ## 📬 Kontakt
-Schau gerne auf meinem GitHub-Profil vorbei ([OmarAlyInformatik](https://github.com))[cite: 1] oder nimm über die Website Kontakt mit mir auf!
+Schau gerne auf meinem GitHub-Profil vorbei ([OmarAlyInformatik](https://github.com)) oder nimm über die Website Kontakt mit mir auf!
