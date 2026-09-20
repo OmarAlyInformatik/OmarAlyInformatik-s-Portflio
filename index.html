@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar's Portfolio</title>
+
+    <!-- Favicon (Der Mann mit Laptop als Browser-Tab-Icon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- (Hier kommen die Styles...) -->
+
+    <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --text-muted: #718096;
+            --accent: #6b46c1; /* Schönes Pastell-Lila / Violett */
+            --accent-hover: #553c9a;
+            --accent-light: #e9d8fd;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Text-Auswahl (Highlight) anpassen */
+        ::selection {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* Benutzerdefinierter Cursor (Punkt) auf Desktop-Geräten */
+        @media (min-width: 768px) {
+            body, a, button, input, textarea {
+                cursor: none !important;
+            }
+
+            .custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 12px;
+                height: 12px;
+                background-color: var(--accent);
+                border-radius: 50%;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+                z-index: 9999;
+                box-shadow: 0 0 10px rgba(107, 70, 193, 0.4);
+            }
+
+            /* Wenn man über Links oder Buttons hovert, wird der Punkt etwas grösser */
+            body.hovering .custom-cursor {
+                width: 24px;
+                height: 24px;
+                background-color: var(--accent-hover);
+                opacity: 0.8;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        header {
+            background: rgba(247, 249, 252, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Sektion */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Bewegender RGB-Farbverlauf für den Namen */
+        .rgb-name {
+            background: linear-gradient(270deg, #6b46c1, #3182ce, #319795, #d69e2e, #6b46c1);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rgbAnimation 8s ease infinite;
+        }
+
+        @keyframes rgbAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 1.8rem;
+            border-radius: 10px;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(107, 70, 193, 0.3);
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-light);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Badges */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background-color: #f0edf9;
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projekt Buttons */
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Benutzerdefinierter Cursor Element -->
+    <div class="custom-cursor" id="cursor"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Omar.dev</a>
+            <nav>
+                <a href="#about">Über mich</a>
+                <a href="#projects">Projekte</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Sektion -->
+        <section class="hero">
+            <div class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> 3. Oberstufe • Schweiz</div>
+            <h1>Hi, ich bin <span class="rgb-name">Omar</span> 👋</h1>
+            <p>Willkommen auf meiner persönlichen GitHub-Webseite! Nach erfolgreich überstandener Aufnahmeprüfung starten bald meine Ferien – und damit auch wieder vollste Power fürs Programmieren.</p>
+            <a href="#projects" class="btn">Meine Projekte entdecken</a>
+        </section>
+
+        <!-- Über mich & Skills -->
+        <section id="about">
+            <h2>Über mich & Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fa-solid fa-user" style="color: var(--accent);"></i> Wer bin ich?</h3>
+                    <p>Ich gehe aktuell in der Schweiz in die 3. Oberstufe. Neben der Schule beschäftige ich mich leidenschaftlich gerne mit der Software- und Webentwicklung. Nach einer kurzen Pause für meine Aufnahmeprüfungen freue ich mich riesig darauf, in den Ferien wieder voll durchzustarten und Neues zu lernen.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-code" style="color: var(--accent);"></i> Mein Tech Stack</h3>
+                    <p>Diese Technologien nutze ich und baue mein Wissen stetig aus:</p>
+                    <div class="skills-container">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Git & GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Projekte -->
+        <section id="projects">
+            <h2>GitHub Highlights</h2>
+            <div class="grid">
+                <!-- Projekt 1 -->
+                <div class="card">
+                    <h3>Arbeitsfokus</h3>
+                    <p>Ein praktisches Tool, das beim strukturierten und organisierten Lernen unterstützt.</p>
+                    <a href="https://github.com/OmarAlyInformatik/Arbeitsfokus" target="_blank" class="project-link">
+                        <i class="fa-brands fa-github"></i> Zum Repository &rarr;
+                    </a>
+                </div>
+                <!-- Projekt 2 -->
+                <div class="card">
+                    <h3>Learning Python</h3>
+                    <p>Mein persönliches Lern-Repository, in dem ich Schritt für Schritt Python-Konzepte ausprobiere und anwende.</p>
+                    <a href="https://github.com/OmarAlyInformatik/Learning-Python" target="_blank" class="project-link">
+                        <i class="fa-brands fa-github"></i> Zum Repository &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt / GitHub Profil -->
+        <section id="contact" style="text-align: center;">
+            <h2>Verbindung aufnehmen</h2>
+            <div class="card" style="max-width: 500px; margin: 0 auto;">
+                <h3>GitHub Profil</h3>
+                <p>Schau gerne direkt auf meinem GitHub-Profil vorbei, um alle meine Repositories und Aktivitäten zu sehen.</p>
+                <a href="https://github.com/OmarAlyInformatik" target="_blank" class="btn">
+                    <i class="fa-brands fa-github"></i> OmarAlyInformatik besuchen
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Omar Aly • Erstellt mit HTML, CSS & GitHub Pages</p>
+    </footer>
+
+    <script>
+        // JavaScript für die flüssige Bewegung des Custom Cursors
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Vergrösserung des Cursors, wenn man über anklickbare Elemente fährt
+        const interactables = document.querySelectorAll('a, button, .card');
+
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    </script>
+</body>
+</html>
