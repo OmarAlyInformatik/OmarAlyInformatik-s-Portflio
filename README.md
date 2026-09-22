@@ -9,6 +9,7 @@ Auf meiner Webseite und in meinen Projekten nutze ich aktuell folgende Technolog
 * **CSS**
 * **JavaScript**
 * **Git & GitHub**
+* *Es wird in der Webseite immer geändert!*
 
 ## 📂 Highlights & Repositories
 * **Arbeitsfokus:** Ein praktisches Tool, das beim strukturierten und organisierten Lernen unterstützt.
@@ -16,4 +17,4 @@ Auf meiner Webseite und in meinen Projekten nutze ich aktuell folgende Technolog
 * **Es kommen bald neue!**
 
 ## 📬 Kontakt
-Schau gerne auf meinem GitHub-Profil vorbei ([OmarAlyInformatik](https://github.com)) oder nimm über die Website Kontakt mit mir auf!
+Schau gerne auf meinem GitHub-Profil vorbei ([OmarAlyInformatik](https://github.com)) oder nimm über das Portfolio Kontakt mit mir auf!
